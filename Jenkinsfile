@@ -41,7 +41,7 @@ pipeline {
         }
 	stage('terraform apply') {
             steps {
-                withEnv(["TF_VAR_access_key=${access_key}", "TF_VAR_secret_key=${secret_key}"])
+                withEnv(["TF_VAR_access_key=AKIAIT6PJELJVR6EJ2DQ", "TF_VAR_secret_key=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"])
                         {
                         sh 'terraform apply ./jenkins'
                         }
