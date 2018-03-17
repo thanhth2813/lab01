@@ -19,7 +19,8 @@ pipeline {
         }
         stage('tfsvars create'){
             steps {
-                sh 'sudo cp /home/thanhth/vars.tf ./jenkins/'
+                sh 'sudo cp /home/thanhth/variables.tf ./jenkins/'
+		sh 'sudo cp /home/thanhth/terraform.tfvars ./jenkins/'
             }
         }
         stage('terraform init') {
