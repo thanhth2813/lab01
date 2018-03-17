@@ -29,13 +29,25 @@ pipeline {
                 sh 'sudo terraform init ./jenkins'
             }
         }
-        stage('terraform apply') {
+        stage('terraform plan') {
             steps {
-		withEnv(["access_key=${access_key}", "secret_key=${secret_key}"]) {
-	                sh 'ls ./jenkins;terraform apply ./jenkins'
+		withEnv(["access_key=${access_key}", "secret_key=${secret_key}"]) 
+			{
+	                sh 'ls ./jenkins;terraform plan ./jenkins'
 			}
             }
         }
+	stage('terraform apply') {
+            steps {
+                withEnv(["access_key=${access_key}", "secret_key=${secret_key}"])
+                        {
+                        sh 'terraform apply ./jenkins'
+                        }
+            }
+        }
+
+
+
         stage('terraform ended') {
             steps {
                 sh 'echo "Ended....!!"'
