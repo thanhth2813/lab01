@@ -26,12 +26,12 @@ pipeline {
         }
         stage('terraform init') {
             steps {
-                sh 'sudo terraform init ./jenkins'
+                sh 'sudo terraform init '
             }
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ./jenkins; sudo terraform plan ./jenkins'
+                sh 'ls ./jenkins; sudo terraform plan'
             }
         }
         stage('terraform ended') {
