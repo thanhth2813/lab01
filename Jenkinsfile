@@ -29,9 +29,9 @@ pipeline {
                 sh 'sudo terraform init ./jenkins'
             }
         }
-        stage('terraform plan') {
+        stage('terraform apply') {
             steps {
-		withEnv(["PATH+TF=${tool 'terraform-0.11.3'}", "TF_VAR_access_key=${access_key}", "TF_VAR_secret_access_key=${secret_key}"]) {
+		withEnv(["access_key=${access_key}", "secret_key=${secret_key}"]) {
 	                sh 'ls ./jenkins;terraform apply ./jenkins'
 			}
             }
