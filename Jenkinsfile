@@ -15,6 +15,7 @@ pipeline {
         stage('git clone') {
             steps {
                 sh 'sudo rm -r *;sudo git clone https://github.com/thanhth2813/lab01.git'
+		sh 'mv lab01 jenkins'
             }
         }
         stage('tfsvars create'){
