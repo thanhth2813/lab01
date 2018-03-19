@@ -27,26 +27,23 @@ pipeline {
             }
         }
         stage('terraform init') {
-            steps {
-		withEnv(["PATH+TF=${tool 'terraform-0.11.4'}"])
-                {
-			sh 'sudo terraform init ./jenkins'
+	    steps {
+		sh 'sudo terraform init ./jenkins'
 		}
-            }
         }
         stage('terraform plan') {
-            steps {
-		withEnv(["TF_VAR_access_key=AKIAIAYIZBQKTERMPOWA", "TF_VAR_secret_key=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"]) 
-			{
+            steps 
+//		withEnv(["TF_VAR_access_key=AKIAIAYIZBQKTERMPOWA", "TF_VAR_secret_key=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"]) 
+			
 	                sh 'ls ./jenkins;terraform plan ./jenkins'
-			}
-            }
+			
+            
         }
 	stage('terraform apply') {
-            steps {
-                        withEnv(["TF_VAR_access_key=AKIAIAYIZBQKTERMPOWA", "TF_VAR_secret_key=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"])
-			{
-                        sh 'terraform apply -input=false -auto-approve ./jenkins'
+            steps 
+//                        withEnv(["TF_VAR_access_key=AKIAIAYIZBQKTERMPOWA", "TF_VAR_secret_key=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"])
+		
+                       sh 'terraform apply -input=false -auto-approve ./jenkins'
 			output "ip" {
 				  value = "${aws_eip.ip.public_ip}"
                                     }					
