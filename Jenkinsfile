@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'master'
+            label 'Node01'
         }
     }
 
@@ -22,8 +22,8 @@ pipeline {
 
         stage('tfsvars create'){
             steps {
-                sh 'sudo cp /home/jenkins/variables.tf ./jenkins/'
-		sh 'sudo cp /home/jenkins/terraform.tfvars ./jenkins/'
+                sh 'sudo cp /home/thanhth/variables.tf ./jenkins/'
+		sh 'sudo cp /home/thanhth/terraform.tfvars ./jenkins/'
             }
         }
         stage('terraform init') {
