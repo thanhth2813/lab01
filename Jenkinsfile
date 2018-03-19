@@ -28,6 +28,7 @@ pipeline {
         }
         stage('terraform init') {
             steps {
+		withEnv(["PATH+TF=${tool 'terraform-0.11.4'}"])
                 sh 'sudo terraform init ./jenkins'
             }
         }
