@@ -49,8 +49,7 @@ pipeline {
                                     }					
                         }
             }
-        }
-
+        
 
         stage('terraform ended') {
             steps {
