@@ -42,11 +42,8 @@ pipeline {
             steps   
 			{
                        sh 'terraform apply -input=false -auto-approve ./jenkins'
-			output "ip" {
-				  value = "${aws_eip.ip.public_ip}"
-                                    }					
-                   
-            }
+       
+		            }
         }
 
         stage('terraform ended') {
