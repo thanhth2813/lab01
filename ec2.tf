@@ -35,7 +35,7 @@ resource "aws_instance" "web" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = "${file("/home/jenkins/workspace/lab01/jenkins/")}"
+      private_key = "${file("/home/jenkins/workspace/lab01/jenkins/mykey")}"
     }
 
   }
