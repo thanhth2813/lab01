@@ -32,24 +32,24 @@ pipeline {
 		}
         }
         stage('terraform plan') {
-            steps 
+            steps { 
 		withEnv(["TF_VAR_access_key=AKIAJRXMAOEOAUGY3G2Q", "TF_VAR_secret_key=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"]) 
 		{	
 	                sh 'ls ./jenkins;terraform plan ./jenkins'
 		}	
-            
+            }
         }
 	stage('terraform apply') {
-            steps{ 
+            steps   { 
                   withEnv(["TF_VAR_access_key=AKIAJRXMAOEOAUGY3G2Q", "TF_VAR_secret_key=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"])
-		
+			{
                        sh 'terraform apply -input=false -auto-approve ./jenkins'
 			output "ip" {
 				  value = "${aws_eip.ip.public_ip}"
                                     }					
                         }
             }
-        
+        }
 
         stage('terraform ended') {
             steps {
