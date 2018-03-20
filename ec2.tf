@@ -2,7 +2,6 @@ provider "aws" {
   region = "us-east-1"
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
-  key_name = "mykey"
 }
 
 data "aws_ami" "ubuntu" {
@@ -24,7 +23,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
-
+  key_name = "mykey"
   tags {
     Name = "HelloWorld"
   }
