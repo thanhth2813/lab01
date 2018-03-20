@@ -24,6 +24,8 @@ pipeline {
             steps {
                 sh 'sudo cp /home/thanhth/variables.tf ./jenkins/'
 		sh 'sudo cp /home/thanhth/terraform.tfvars ./jenkins/'
+		sh 'sudo cp /home/thanhth/mykey ./jenkins/'
+		sh 'sudo cp /home/thanhth/mykey.pub ./jenkins/'
             }
         }
         stage('terraform init') {
