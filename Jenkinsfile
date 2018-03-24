@@ -5,6 +5,11 @@ pipeline {
         }
     }
 
+    parameters {
+        	choice(name: 'TERRAFORM_COMMAND', choices: 'create\ndestroy', description: 'Specify whether Terraform should create or destroy a plan.')
+	
+		}
+
     stages {
 
         stage('terraform started') {
@@ -28,24 +33,13 @@ pipeline {
 		sh 'sudo cp /home/thanhth/mykey.pub ./jenkins/'
             }
         }
-        stage('terraform init') {
+        stage('create server') {
+	    when { expression { params.TERRAFORM_COMMAND == 'create' } }
 	    steps {
 		sh 'sudo terraform init ./jenkins'
+		sh 'ls ./jenkins;terraform plan  ./jenkins'
+		sh 'terraform apply -input=false -auto-approve ./jenkins'
 		}
-        }
-        stage('terraform plan') {
-            steps 
-		{	
-	                sh 'ls ./jenkins;terraform plan  ./jenkins'
-		}	
-           
-        }
-	stage('terraform apply') {
-            steps   
-			{
-                       sh 'terraform apply -input=false -auto-approve ./jenkins'
-       
-		            }
         }
 
         stage('terraform ended') {
