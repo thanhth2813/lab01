@@ -5,10 +5,10 @@ pipeline {
         }
     }
 
-    parameters {
-        	choice(name: 'TERRAFORM_COMMAND', choices: 'create\ndestroy', description: 'Specify whether Terraform should create or destroy a plan.')
-	
-		}
+#    parameters {
+#        	choice(name: 'TERRAFORM_COMMAND', choices: 'create\ndestroy', description: 'Specify whether Terraform should create or destroy a plan.')
+#	
+#		}
 
     stages {
 
