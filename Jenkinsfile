@@ -4,7 +4,9 @@ pipeline {
             label 'Host01'
         }
     }
-
+    parameters {
+        choice(name: 'TERRAFORM_COMMAND', choices: 'create\nplan\ndestroy', description: 'Should Terraform create or destroy a plan.')
+               }		
 
     stages {
 
@@ -30,6 +32,8 @@ pipeline {
             }
         }
         stage('create server') {
+	    
+	    when { expression { params.TERRAFORM_COMMAND == 'create' } }
 	    steps {
 		sh 'sudo terraform init ./jenkins'
 		sh 'ls ./jenkins;terraform plan  ./jenkins'
