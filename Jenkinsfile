@@ -34,7 +34,7 @@ pipeline {
             }
         }
         stage('create server') {
-	    when { expression { params.TERRAFORM_COMMAND == 'create' } }
+#	    when { expression { params.TERRAFORM_COMMAND == 'create' } }
 	    steps {
 		sh 'sudo terraform init ./jenkins'
 		sh 'ls ./jenkins;terraform plan  ./jenkins'
